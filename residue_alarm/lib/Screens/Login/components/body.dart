@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:residue_alarm/Screens/Login/components/background.dart';
 import 'package:residue_alarm/Screens/Signup/signup_screen.dart';
+import 'package:residue_alarm/Screens/Uploading/uploading_screen.dart';
 import 'package:residue_alarm/components/already_have_a_account_check.dart';
 import 'package:residue_alarm/components/rounded_button.dart';
 import 'package:residue_alarm/components/rounded_input_field.dart';
@@ -45,7 +46,16 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "LOGIN",
-              press: () {},
+              press: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return UploadingScreen();
+                    },
+                  ),
+                );
+              },
             ),
             SizedBox(
               height: size.height * 0.03,

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Residue Alarm',
       theme: ThemeData(
         primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: kPrimaryColor,
       ),
       home: WelcomeScreen(),
     );
