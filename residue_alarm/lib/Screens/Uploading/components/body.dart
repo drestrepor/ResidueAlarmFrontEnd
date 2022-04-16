@@ -6,6 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:residue_alarm/Screens/Uploading/components/background.dart';
 import 'package:residue_alarm/components/boxed_button.dart';
+import 'package:residue_alarm/components/rounded_button.dart';
+import 'package:residue_alarm/components/rounded_elevated_button.dart';
 import 'package:residue_alarm/constants.dart';
 
 class Body extends StatefulWidget {
@@ -42,7 +44,7 @@ class _BodyState extends State<Body> {
               height: size.height * 0.12,
             ),
             SizedBox(
-              height: size.height * 0.03,
+              height: size.height * 0.05,
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(5),
@@ -59,7 +61,7 @@ class _BodyState extends State<Body> {
                     ),
             ),
             SizedBox(
-              height: size.height * 0.03,
+              height: size.height * 0.055,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -77,6 +79,15 @@ class _BodyState extends State<Body> {
                   },
                 ),
               ],
+            ),
+            SizedBox(
+              height: size.height * 0.035,
+            ),
+            RoundedElevatedButton(
+              text: "SEND",
+              press: () {},
+              color: kPrimaryLightColor,
+              textColor: Colors.black,
             ),
           ],
         ),
