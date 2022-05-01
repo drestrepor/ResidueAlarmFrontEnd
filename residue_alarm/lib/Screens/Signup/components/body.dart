@@ -36,76 +36,113 @@ class _BodyState extends State<Body> {
     Size size = MediaQuery.of(context).size;
     return Background(
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: size.height * 0.03),
-            SvgPicture.asset(
-              "assets/icons/logoResidueAlarm.svg",
-              height: size.width * 0.29,
-            ),
-            SizedBox(height: size.height * 0.03),
-            RoundedInputField(
-              hintText: "Your Email",
-              onChanged: (value) {},
-            ),
-            RoundedPasswordField(
-              onChanged: (value) {},
-              hintText: 'Password',
-            ),
-            RoundedPasswordField(
-              onChanged: (value) {},
-              hintText: 'Confirm your password',
-            ),
-            RoundedButton(
-              text: "SIGNUP",
-              press: () {},
-            ),
-            SizedBox(height: size.height * 0.03),
-            AlreadyHaveAnAccountCheck(
-              login: false,
-              press: () {
-                if (validateAndSave()) {
-                  setState(() {
-                    isAPIcallProcess = true;
-                  });
+        child: Form(
+          key: globalFormKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: size.height * 0.03),
+              SvgPicture.asset(
+                "assets/icons/logoResidueAlarm.svg",
+                height: size.width * 0.29,
+              ),
+              SizedBox(height: size.height * 0.03),
+              RoundedInputField(
+                hintText: "Your Name",
+                onChanged: (value) {},
+                onSaved: (value) {
+                  username = value;
+                },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Please fill this field";
+                  }
 
-                  RegisterRequestModel model = RegisterRequestModel(
-                    name: username!,
-                    email: useremailValue!,
-                    password: passwordValue!,
-                  );
+                  return null;
+                },
+              ),
+              RoundedInputField(
+                hintText: "Your Email",
+                onChanged: (value) {},
+                onSaved: (value) {
+                  useremailValue = value;
+                },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Please fill this field";
+                  }
 
-                  APIService.register(model).then((response) {
+                  return null;
+                },
+              ),
+              RoundedPasswordField(
+                hintText: 'Password',
+                onChanged: (value) {},
+                onSaved: (value) {
+                  passwordValue = value;
+                },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Please fill this field";
+                  }
+
+                  return null;
+                },
+              ),
+              RoundedButton(
+                text: "SIGNUP",
+                press: () {
+                  if (validateAndSave()) {
                     setState(() {
-                      isAPIcallProcess = false;
+                      isAPIcallProcess = true;
                     });
-                    if (response.data != null) {
-                      FormHelper.showSimpleAlertDialog(context, Config.appName,
-                          "Registration Succesfull. Please login.", "OK", () {
-                        Navigator.pop(context);
+
+                    RegisterRequestModel model = RegisterRequestModel(
+                      name: username!,
+                      email: useremailValue!,
+                      password: passwordValue!,
+                    );
+
+                    APIService.register(model).then((response) {
+                      setState(() {
+                        isAPIcallProcess = false;
                       });
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, '/login', (route) => false);
-                    } else {
-                      FormHelper.showSimpleAlertDialog(
-                          context, Config.appName, response.message, "OK", () {
-                        Navigator.pop(context);
-                      });
-                    }
-                  });
-                }
-                /* Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                ); */
-              },
-            )
-          ],
+                      if (response.name != null) {
+                        FormHelper.showSimpleAlertDialog(
+                            context,
+                            Config.appName,
+                            "Registration Succesfull. Please login.",
+                            "OK", () {
+                          Navigator.pop(context);
+                        });
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/login', (route) => false);
+                      } else {
+                        FormHelper.showSimpleAlertDialog(
+                            context, Config.appName, response.email, "OK", () {
+                          Navigator.pop(context);
+                        });
+                      }
+                    });
+                  }
+                },
+              ),
+              SizedBox(height: size.height * 0.03),
+              AlreadyHaveAnAccountCheck(
+                login: false,
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return LoginScreen();
+                      },
+                    ),
+                  );
+                },
+              )
+            ],
+          ),
         ),
       ),
     );

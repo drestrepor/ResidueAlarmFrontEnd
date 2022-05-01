@@ -4,47 +4,22 @@ RegisterResponseModel registerResponseModel(String str) =>
     RegisterResponseModel.fromJson(json.decode(str));
 
 class RegisterResponseModel {
-  RegisterResponseModel({
-    required this.message,
-    required this.data,
-  });
-  late final String message;
-  late final Data? data;
-
-  RegisterResponseModel.fromJson(Map<String, dynamic> json) {
-    message = json['message'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['message'] = message;
-    _data['data'] = data!.toJson();
-    return _data;
-  }
-}
-
-class Data {
-  Data({
+  RegisterResponseModel.dart({
     required this.email,
-    required this.date,
-    required this.id,
+    required this.name,
   });
   late final String email;
-  late final String date;
-  late final String id;
+  late final String name;
 
-  Data.fromJson(Map<String, dynamic> json) {
+  RegisterResponseModel.fromJson(Map<String, dynamic> json) {
     email = json['email'];
-    date = json['date'];
-    id = json['id'];
+    name = json['name'];
   }
 
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['email'] = email;
-    _data['date'] = date;
-    _data['id'] = id;
+    _data['name'] = name;
     return _data;
   }
 }
