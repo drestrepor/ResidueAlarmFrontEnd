@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.0.3
   image_picker: ^0.8.5
+  api_cache_manager: ^1.0.2
+  snippet_coder_utils: ^1.0.12
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:residue_alarm/Screens/Login/login_screen.dart';
+import 'package:residue_alarm/Screens/Signup/signup_screen.dart';
+import 'package:residue_alarm/Screens/Uploading/uploading_screen.dart';
 import 'package:residue_alarm/Screens/Welcome/welcome_screen.dart';
 import 'package:residue_alarm/constants.dart';
 
@@ -18,6 +21,12 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kPrimaryColor,
       ),
+      routes: {
+        '/welcome': (context) => WelcomeScreen(),
+        '/login': (context) => LoginScreen(),
+        '/signup': (context) => SignUpScreen(),
+        '/upload': (context) => UploadingScreen()
+      },
       home: WelcomeScreen(),
     );
   }
