@@ -94,7 +94,7 @@ class _BodyState extends State<Body> {
 
                       if (response) {
                         Navigator.pushNamedAndRemoveUntil(
-                            context, '/upload', (route) => false);
+                            context, '/navigating', (route) => false);
                       } else {
                         FormHelper.showSimpleAlertDialog(context,
                             Config.appName, "Invalid Email/Password", "OK", () {

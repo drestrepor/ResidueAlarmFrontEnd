@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:residue_alarm/Screens/Login/login_screen.dart';
+import 'package:residue_alarm/Screens/Navigating/navigating_screen.dart';
+import 'package:residue_alarm/Screens/ProfilePage/profile_page_screen.dart';
 import 'package:residue_alarm/Screens/Signup/signup_screen.dart';
 import 'package:residue_alarm/Screens/Uploading/uploading_screen.dart';
 import 'package:residue_alarm/Screens/Welcome/welcome_screen.dart';
@@ -25,7 +27,9 @@ class MyApp extends StatelessWidget {
         '/welcome': (context) => WelcomeScreen(),
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignUpScreen(),
-        '/upload': (context) => UploadingScreen()
+        '/navigating': (context) => NavigatingScreen(),
+        '/upload': (context) => UploadingScreen(),
+        '/profile': (context) => ProfilePageScreen(),
       },
       home: WelcomeScreen(),
     );
